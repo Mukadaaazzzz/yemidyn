@@ -22,31 +22,34 @@ const testimonials = [
 const Testimonials = () => {
   return (
     <Box sx={{ padding: "20px" }}>
-      <Typography variant="h4" component="h2" gutterBottom>
-        Testimonials
-      </Typography>
-      <Grid container spacing={2}>
-        {testimonials.map((testimonial, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
-            <Card>
-              <CardMedia
-                component="img"
-                height="140"
-                image={testimonial.image}
-                alt={testimonial.name}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {testimonial.name}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {testimonial.feedback}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+      <section id="testimonials">
+        <Typography variant="h4" component="h2" gutterBottom>
+          Testimonials
+        </Typography>
+        <Grid container spacing={2}>
+          {testimonials.map((testimonial, index) => (
+            <Grid item xs={12} sm={6} md={3} key={index}>
+              <Card>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image={testimonial.image}
+                  alt={testimonial.name}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {testimonial.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {testimonial.feedback}
+                  </Typography>
+                  <section />
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </section>
     </Box>
   );
 };

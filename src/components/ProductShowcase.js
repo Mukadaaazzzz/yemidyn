@@ -33,38 +33,40 @@ const products = [
 const ProductShowcase = () => {
   return (
     <Box sx={{ padding: "20px" }}>
-      <Typography variant="h4" component="h2" gutterBottom>
-        Our Products
-      </Typography>
-      <Grid container spacing={2}>
-        {products.map((product, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
-            <Card>
-              <CardMedia
-                component="img"
-                height="140"
-                image={product.image}
-                alt={product.name}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {product.name}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {product.description}
-                </Typography>
-              </CardContent>
-              <Button
-                size="small"
-                color="primary"
-                href="https://wa.me/c/2348169469300"
-              >
-                View More
-              </Button>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+      <section id="products">
+        <Typography variant="h4" component="h2" gutterBottom>
+          Our Products
+        </Typography>
+        <Grid container spacing={2}>
+          {products.map((product, index) => (
+            <Grid item xs={12} sm={6} md={3} key={index}>
+              <Card>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image={product.image}
+                  alt={product.name}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {product.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {product.description}
+                  </Typography>
+                </CardContent>
+                <Button
+                  size="small"
+                  color="primary"
+                  href="https://wa.me/c/2348169469300"
+                >
+                  View More
+                </Button>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </section>
     </Box>
   );
 };
