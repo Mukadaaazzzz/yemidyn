@@ -27,102 +27,104 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="fixed">
-      <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Yemidyn
-        </Typography>
+    <section id="home">
+      <AppBar position="fixed">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Yemidyn
+          </Typography>
 
-        {isMobile ? (
-          <>
-            <IconButton
-              edge="end"
-              color="inherit"
-              onClick={handleMenuOpen}
-              aria-label="menu"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleMenuClose}
-              PaperProps={{
-                style: {
-                  maxHeight: 48 * 4.5,
-                  width: "20ch",
-                },
+          {isMobile ? (
+            <>
+              <IconButton
+                edge="end"
+                color="inherit"
+                onClick={handleMenuOpen}
+                aria-label="menu"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleMenuClose}
+                PaperProps={{
+                  style: {
+                    maxHeight: 48 * 4.5,
+                    width: "20ch",
+                  },
+                }}
+              >
+                <MenuItem
+                  onClick={() => {
+                    handleMenuClose();
+                    window.location.href = "#home";
+                  }}
+                >
+                  Home
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    handleMenuClose();
+                    window.location.href = "#about";
+                  }}
+                >
+                  About
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    handleMenuClose();
+                    window.location.href = "#products";
+                  }}
+                >
+                  Products
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    handleMenuClose();
+                    window.location.href = "#testimonials";
+                  }}
+                >
+                  Testimonials
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    handleMenuClose();
+                    window.location.href = "https://wa.me/c/2348169469300";
+                  }}
+                >
+                  Order
+                </MenuItem>
+              </Menu>
+            </>
+          ) : (
+            <div
+              style={{
+                flexGrow: 1,
+                display: "flex",
+                justifyContent: "space-around",
               }}
             >
-              <MenuItem
-                onClick={() => {
-                  handleMenuClose();
-                  window.location.href = "#home";
-                }}
-              >
+              <Button color="inherit" href="#home">
                 Home
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  handleMenuClose();
-                  window.location.href = "#about";
-                }}
-              >
+              </Button>
+              <Button color="inherit" href="#about">
                 About
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  handleMenuClose();
-                  window.location.href = "#products";
-                }}
-              >
+              </Button>
+              <Button color="inherit" href="#products">
                 Products
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  handleMenuClose();
-                  window.location.href = "#testimonials";
-                }}
-              >
+              </Button>
+              <Button color="inherit" href="#testimonials">
                 Testimonials
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  handleMenuClose();
-                  window.location.href = "https://wa.me/c/2348169469300";
-                }}
-              >
+              </Button>
+              <Button color="inherit" href="https://wa.me/c/2348169469300">
                 Order
-              </MenuItem>
-            </Menu>
-          </>
-        ) : (
-          <div
-            style={{
-              flexGrow: 1,
-              display: "flex",
-              justifyContent: "space-around",
-            }}
-          >
-            <Button color="inherit" href="#home">
-              Home
-            </Button>
-            <Button color="inherit" href="#about">
-              About
-            </Button>
-            <Button color="inherit" href="#products">
-              Products
-            </Button>
-            <Button color="inherit" href="#testimonials">
-              Testimonials
-            </Button>
-            <Button color="inherit" href="https://wa.me/c/2348169469300">
-              Order
-            </Button>
-          </div>
-        )}
-      </Toolbar>
-    </AppBar>
+              </Button>
+            </div>
+          )}
+        </Toolbar>
+      </AppBar>
+    </section>
   );
 };
 

@@ -5,6 +5,7 @@ import AboutUs from "./components/AboutUs";
 import ProductShowcase from "./components/ProductShowcase";
 import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
+import "./styles/App.css";
 
 const App = () => {
   return (

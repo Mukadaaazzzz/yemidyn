@@ -32,7 +32,14 @@ const products = [
 
 const ProductShowcase = () => {
   return (
-    <Box sx={{ padding: "20px" }}>
+    <Box
+      sx={{
+        textAlign: "center",
+        py: 8,
+        backgroundColor: "#f9f9f9",
+        minHeight: "100vh",
+      }}
+    >
       <section id="products">
         <Typography variant="h4" component="h2" gutterBottom>
           Our Products

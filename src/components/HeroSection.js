@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Typography, Box, Grid } from "@mui/material";
 import heroImage from "../assets/hero-image.jpg";
+import "./HeroSection.css";
 
 const HeroSection = () => {
   return (
@@ -10,12 +11,16 @@ const HeroSection = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "20px",
       }}
     >
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
-          <Typography variant="h2" component="h1" gutterBottom>
+          <Typography
+            variant="h2"
+            component="h1"
+            gutterBottom
+            className="animate-text"
+          >
             Redefining Fashion & Elegance
           </Typography>
           <Typography variant="h6" component="p" gutterBottom>
