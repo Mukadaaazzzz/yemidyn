@@ -1,130 +1,120 @@
-import { useState } from "react";
+import React from "react";
+import logo from "../assets/logo.png"; // Ensure this path is correct
 import {
   AppBar,
   Toolbar,
-  Typography,
-  Button,
+  Box,
   IconButton,
+  Button,
   Menu,
   MenuItem,
-  useTheme,
   useMediaQuery,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { Link as ScrollLink } from "react-scroll";
+import { useTheme } from "@mui/material/styles";
 
-const Header = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+const Header = ({ handleDrawerToggle }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  const handleMenuOpen = (event) => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
-  const handleMenuClose = () => {
+  const handleClose = () => {
     setAnchorEl(null);
   };
 
-  return (
-    <section id="home">
-      <AppBar position="fixed">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Yemidyn
-          </Typography>
+  const menuItems = [
+    { label: "Home", to: "home" },
+    { label: "About", to: "about" },
+    { label: "Products", to: "products" },
+    { label: "Testimonials", to: "testimonials" },
+    {
+      label: "Order",
+      to: "order",
+      external: true,
+      link: "https://wa.me/c/2348169469300",
+    },
+  ];
 
-          {isMobile ? (
-            <>
-              <IconButton
-                edge="end"
-                color="inherit"
-                onClick={handleMenuOpen}
-                aria-label="menu"
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleMenuClose}
-                PaperProps={{
-                  style: {
-                    maxHeight: 48 * 4.5,
-                    width: "20ch",
-                  },
-                }}
-              >
-                <MenuItem
-                  onClick={() => {
-                    handleMenuClose();
-                    window.location.href = "#home";
-                  }}
-                >
-                  Home
-                </MenuItem>
-                <MenuItem
-                  onClick={() => {
-                    handleMenuClose();
-                    window.location.href = "#about";
-                  }}
-                >
-                  About
-                </MenuItem>
-                <MenuItem
-                  onClick={() => {
-                    handleMenuClose();
-                    window.location.href = "#products";
-                  }}
-                >
-                  Products
-                </MenuItem>
-                <MenuItem
-                  onClick={() => {
-                    handleMenuClose();
-                    window.location.href = "#testimonials";
-                  }}
-                >
-                  Testimonials
-                </MenuItem>
-                <MenuItem
-                  onClick={() => {
-                    handleMenuClose();
-                    window.location.href = "https://wa.me/c/2348169469300";
-                  }}
-                >
-                  Order
-                </MenuItem>
-              </Menu>
-            </>
-          ) : (
-            <div
-              style={{
-                flexGrow: 1,
-                display: "flex",
-                justifyContent: "space-around",
-              }}
+  return (
+    <AppBar position="fixed" color="primary">
+      <Toolbar>
+        <Box sx={{ flexGrow: 1 }}>
+          <img src={logo} alt="Yemidyn Logo" style={{ height: "50px" }} />
+        </Box>
+        {isMobile ? (
+          <>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={handleMenu}
             >
-              <Button color="inherit" href="#home">
-                Home
-              </Button>
-              <Button color="inherit" href="#about">
-                About
-              </Button>
-              <Button color="inherit" href="#products">
-                Products
-              </Button>
-              <Button color="inherit" href="#testimonials">
-                Testimonials
-              </Button>
-              <Button color="inherit" href="https://wa.me/c/2348169469300">
-                Order
-              </Button>
-            </div>
-          )}
-        </Toolbar>
-      </AppBar>
-    </section>
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+              keepMounted
+            >
+              {menuItems.map((item, index) =>
+                item.external ? (
+                  <MenuItem
+                    key={index}
+                    onClick={handleClose}
+                    component="a"
+                    href={item.link}
+                  >
+                    {item.label}
+                  </MenuItem>
+                ) : (
+                  <MenuItem key={index} onClick={handleClose}>
+                    <ScrollLink
+                      to={item.to}
+                      smooth={true}
+                      duration={500}
+                      offset={-70}
+                    >
+                      {item.label}
+                    </ScrollLink>
+                  </MenuItem>
+                )
+              )}
+            </Menu>
+          </>
+        ) : (
+          <Box sx={{ display: "flex", gap: 2 }}>
+            {menuItems.map((item, index) =>
+              item.external ? (
+                <Button
+                  key={index}
+                  color="inherit"
+                  component="a"
+                  href={item.link}
+                >
+                  {item.label}
+                </Button>
+              ) : (
+                <Button key={index} color="inherit">
+                  <ScrollLink
+                    to={item.to}
+                    smooth={true}
+                    duration={500}
+                    offset={-70}
+                  >
+                    {item.label}
+                  </ScrollLink>
+                </Button>
+              )
+            )}
+          </Box>
+        )}
+      </Toolbar>
+    </AppBar>
   );
 };
 
