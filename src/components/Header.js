@@ -1,16 +1,22 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Box,
+  IconButton,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const Header = () => {
   return (
-    <AppBar position="static" color="transparent" elevation={0}>
-      <Toolbar sx={{ justifyContent: "space-between" }}>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Typography variant="h6" component="div">
-            Yemidyn
-          </Typography>
-        </Box>
-        <Box sx={{ display: "flex", gap: 3 }}>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          Yemidyn
+        </Typography>
+        <Box sx={{ display: { xs: "none", sm: "block" } }}>
           <Button color="inherit" href="#home">
             Home
           </Button>
@@ -23,16 +29,17 @@ const Header = () => {
           <Button color="inherit" href="#testimonials">
             Testimonials
           </Button>
-          <Button
-            color="inherit"
-            component="a"
-            href="https://wa.me/c/2348169469300"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Button color="inherit" href="https://wa.me/c/2348169469300">
             Order
           </Button>
         </Box>
+        <IconButton
+          color="inherit"
+          aria-label="menu"
+          sx={{ display: { xs: "block", sm: "none" } }}
+        >
+          <MenuIcon />
+        </IconButton>
       </Toolbar>
     </AppBar>
   );

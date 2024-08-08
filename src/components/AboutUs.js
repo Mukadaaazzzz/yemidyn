@@ -1,35 +1,45 @@
 import React from "react";
-import { Typography, Box, Grid } from "@mui/material";
-import aboutImage from "../assets/about-image.jpg";
+import { Box, Typography, CardContent, CardMedia, Grid } from "@mui/material";
+import aboutImage from "../assets/about-image.jpg"; // Assuming there's an image for the about section
 
-const AboutUs: React.FC = () => {
+const AboutUs = () => {
   return (
-    <section id="about">
-      <Box sx={{ padding: "4rem 0", backgroundColor: "#f5f5f5" }} id="about">
-        <Grid container spacing={4} alignItems="center">
-          <Grid item xs={12} md={6}>
-            <Box
-              component="img"
-              sx={{ width: "100%", borderRadius: "8px" }}
-              src={aboutImage}
-              alt="About Yemidyn"
-            />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Typography variant="h4" component="h2" gutterBottom>
-              About Yemidyn
-            </Typography>
-            <Typography variant="body1" component="p">
-              At Yemidyn, we believe in the power of fashion to inspire and
-              transform. Our mission is to create unique, stylish pieces that
-              resonate with the spirit of adventure and elegance. From carefully
-              crafted designs to premium materials, we are committed to
-              delivering the best in fashion.
-            </Typography>
-          </Grid>
+    <Box
+      id="about"
+      sx={{
+        padding: "20px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        textAlign: "center",
+        backgroundColor: "#f5f5f5",
+      }}
+    >
+      <Typography variant="h4" component="h2" gutterBottom>
+        About Us
+      </Typography>
+      <Grid container spacing={2} alignItems="center">
+        <Grid item xs={12} md={6}>
+          <CardMedia
+            component="img"
+            image={aboutImage}
+            alt="About Us"
+            sx={{ width: "100%", borderRadius: "8px" }}
+          />
         </Grid>
-      </Box>
-    </section>
+        <Grid item xs={12} md={6}>
+          <CardContent>
+            <Typography variant="body1" color="text.secondary">
+              We are a fashion brand dedicated to bringing you the best in style
+              and elegance. Our products are crafted with the highest quality
+              materials and designed to make you look and feel your best.
+              Whether you're looking for something casual or formal, we have
+              something for everyone.
+            </Typography>
+          </CardContent>
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 
